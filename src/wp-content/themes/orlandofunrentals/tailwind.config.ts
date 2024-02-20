@@ -3,6 +3,9 @@ export default {
   theme: {
     extend: {
       colors: {},
+      fontFamily: {
+        sans: ['Montserrat', 'sans-serif'],
+      },
     },
   },
   plugins: [],

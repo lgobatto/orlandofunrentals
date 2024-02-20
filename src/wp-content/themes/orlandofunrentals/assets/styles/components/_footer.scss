@@ -1,0 +1,103 @@
+/* stylelint-disable */
+.footer2 {
+  width: 100%;
+  height: auto;
+  background: #23242a;
+}
+
+.footer2-info {
+  display: flex;
+  align-content: flex-start;
+  justify-content: space-between;
+  padding: 24px 165px 24px 165px;
+
+  transition-property: padding;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  -webkit-transition-property: padding;
+  -webkit-transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease;
+
+  @media (max-width: 1024px) {
+    padding: 24px 20px;
+  }
+
+  @media (max-width: 769px) {
+    padding: 24px 10px;
+  }
+
+  @media (max-width: 680px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.texto2 {
+  display: inline;
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  font-feature-settings: 'liga' off;
+  color: #d9dbe1;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+
+  a:link {
+    font-size: 14px;
+    color: #fff;
+  }
+  a:active {
+    font-size: 14px;
+    color: #fff;
+  }
+  a:visited {
+    font-size: 14px;
+    color: #fff;
+  }
+  a:hover {
+    font-size: 14px;
+    color: #fff;
+  }
+}
+
+.icones {
+  display: inline;
+  text-align: right;
+
+  @media (max-width: 680px) {
+    margin-top: 10px;
+    text-align: center;
+  }
+}
+
+.logo-rede-social {
+  width: 16px;
+  margin-left: 24px;
+  vertical-align: bottom;
+}
+
+.logo-rede-social-facebook {
+  width: 8px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#instagram {
+  @media (max-width: 680px) {
+    margin: 0px;
+  }
+}
+
+.texto2-left {
+  text-align: left !important;
+
+  @media (max-width: 680px) {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+}
+
+/* stylelint-enable */

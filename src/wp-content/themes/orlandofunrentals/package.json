@@ -2,6 +2,7 @@
   "name": "orlandofunrentals",
   "$schema": "https://bud.js.org/bud.package.json",
   "description": "wordpress customizes theme",
+  "private": true,
   "engines": {
     "node": ">=16"
   },

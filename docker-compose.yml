@@ -36,7 +36,9 @@ services:
     volumes:
       - wordpress_data:/app
       - ./src/wp-content/themes/${PROJECT_NAME}:${THEME_ROOT}
+      - ./src/packages:/app/packages
       - ./src/composer.json:/app/composer.json
+      - ./src/auth.json:/app/auth.json
 
     extra_hosts:
       - 'host.docker.internal:host-gateway'

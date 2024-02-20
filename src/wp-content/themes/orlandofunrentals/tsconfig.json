@@ -2,6 +2,7 @@
   "extends": ["@roots/bud/config/tsconfig.json"],
   "compilerOptions": {
     "allowJs": true,
+    "checkJs": true,
     "baseUrl": "./assets",
     "outDir": "./dist",
     /**
@@ -30,7 +31,6 @@
     ]
   },
   "files": ["./bud.config.ts", "./types.d.ts"],
-  "include": ["assets"],
   "exclude": ["./node_modules", "./dist"],
   "bud": {
     "useCompilerOptions": true

@@ -14,7 +14,8 @@ if (!defined('ABSPATH')) {
 
 define('THEME_VERSION', '1.0.0');
 
-require get_template_directory() . '/app/helpers.php';
-require get_template_directory() . '/app/setup.php';
-require get_template_directory() . '/app/actions.php';
-require get_template_directory() . '/app/filters.php';
+require get_stylesheet_directory() . '/app/helpers.php';
+require get_stylesheet_directory() . '/app/setup.php';
+require get_stylesheet_directory() . '/app/actions.php';
+require get_stylesheet_directory() . '/app/filters.php';
+require get_stylesheet_directory() . '/app/shortcodes.php';
