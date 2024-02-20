@@ -1,0 +1,38 @@
+{
+  "extends": ["@roots/bud/config/tsconfig.json"],
+  "compilerOptions": {
+    "allowJs": true,
+    "baseUrl": "./assets",
+    "outDir": "./dist",
+    /**
+     * Resolve aliases
+     */
+    "paths": {
+      "@fonts/*": ["./fonts/*"],
+      "@images/*": ["./images/*"],
+      "@scripts/*": ["./scripts/*"],
+      "@styles/*": ["./styles/*"]
+    },
+    "types": [
+      "@roots/bud",
+      "@roots/bud-babel",
+      "@roots/bud-swc",
+      "@roots/bud-sass",
+      "@roots/bud-tailwindcss",
+      "@roots/bud-postcss",
+      "@roots/bud-eslint",
+      "@roots/stylelint",
+      "@roots/bud-preset-wordpress",
+      "@roots/bud-wordpress-dependencies",
+      "@roots/bud-wordpress-externals",
+      "@roots/bud-wordpress-manifests",
+      "webpack/module"
+    ]
+  },
+  "files": ["./bud.config.ts", "./types.d.ts"],
+  "include": ["assets"],
+  "exclude": ["./node_modules", "./dist"],
+  "bud": {
+    "useCompilerOptions": true
+  }
+}

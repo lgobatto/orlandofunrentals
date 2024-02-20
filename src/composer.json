@@ -1,0 +1,90 @@
+{
+  "name": "lgobatto/orlandofunrentals",
+  "description": "Um projeto para WordPress.",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Leonardo Gobatto",
+      "email": "leo@codigodoleo.com.br"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org",
+      "only": [
+        "wpackagist-plugin/*",
+        "wpackagist-theme/*"
+      ]
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "plugin/wp-migrate-db-pro",
+        "version": "2.6.11",
+        "type": "wordpress-plugin",
+        "dist": {
+          "type": "zip",
+          "url": "./packages/wp-migrate-db-pro.zip"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "plugin/wp-rocket",
+        "version": "3.15.9",
+        "type": "wordpress-plugin",
+        "dist": {
+          "type": "zip",
+          "url": "./packages/wp-rocket.zip"
+        }
+      }
+    }
+  ],
+  "require": {
+    "php": ">=8.0",
+    "composer/installers": "1.11",
+    "inpsyde/wp-translation-downloader": "2.4",
+    "wpackagist-plugin/elementor": "3.19.2",
+    "plugin/wp-migrate-db-pro": "2.6.11",
+    "plugin/wp-rocket": "3.15.9",
+    "wpackagist-theme/hello-elementor": "3.0.1"
+  },
+  "extra": {
+    "installer-paths": {
+      "./wp-content/plugins/{$name}/": [
+        "type:wordpress-plugin"
+      ],
+      "./wp-content/mu-plugins/{$name}/": [
+        "type:wordpress-muplugin"
+      ],
+      "./wp-content/themes/{$name}/": [
+        "type:wordpress-theme"
+      ]
+    },
+    "wp-translation-downloader": {
+      "languages": [
+        "en_US"
+      ],
+      "languageRootDir": "./wp-content/languages",
+      "virtual-packages": [
+        {
+          "name": "wordpress/wordpress",
+          "type": "wordpress-core",
+          "version": "6.3.2"
+        }
+      ]
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true,
+      "inpsyde/wp-translation-downloader": true
+    },
+    "vendor-dir": "./vendor",
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true
+  }
+}

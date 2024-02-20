@@ -1,0 +1,42 @@
+{
+  "name": "orlandofunrentals",
+  "$schema": "https://bud.js.org/bud.package.json",
+  "description": "wordpress customizes theme",
+  "engines": {
+    "node": ">=16"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lgobatto/orlandofunrentals.git"
+  },
+  "license": "MIT",
+  "type": "module",
+  "browserslist": [
+    "extends @roots/browserslist-config"
+  ],
+  "scripts": {
+    "build": "bud build production",
+    "dev": "bud build development",
+    "lint": "yarn lint:js && yarn lint:css",
+    "lint:js": "eslint assets/scripts",
+    "lint:css": "stylelint \"assets/**/*.{css,scss,vue}\"",
+    "test": "yarn lint"
+  },
+  "devDependencies": {
+    "@roots/bud": "^6.20.0",
+    "@roots/bud-babel": "^6.20.0",
+    "@roots/bud-eslint": "^6.20.0",
+    "@roots/bud-postcss": "^6.20.0",
+    "@roots/bud-preset-wordpress": "^6.20.0",
+    "@roots/bud-prettier": "^6.20.0",
+    "@roots/bud-sass": "^6.20.0",
+    "@roots/bud-stylelint": "^6.20.0",
+    "@roots/bud-swc": "^6.20.0",
+    "@roots/bud-tailwindcss": "^6.20.0",
+    "@roots/eslint-config": "^6.20.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}

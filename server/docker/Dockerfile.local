@@ -1,0 +1,53 @@
+FROM webdevops/php-nginx-dev:8.2
+
+# Set high level user
+USER root
+
+# Install dependencies for docker image and project modules if needed
+RUN apt-get update && \
+    apt-get install -y ca-certificates curl git gnupg && \
+    mkdir -p /etc/apt/keyrings && \
+    curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+
+# Set Node.js version
+ENV NODE_MAJOR=20
+
+# Add Node.js repository
+RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_${NODE_MAJOR}.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list
+
+# Install Node.js
+RUN apt-get update && \
+    apt-get install nodejs -y
+
+# Install n package for managing Node.js versions
+RUN npm install -g n
+
+# Set Node.js version to 19
+RUN n 20
+
+# Install Yarn
+RUN npm install --global yarn
+
+# Install Wordpress
+COPY --from=wordpress:6.4.3 --chown=application:application /usr/src/wordpress /app
+
+# Install WP-CLI
+COPY --from=wordpress:cli /usr/local/bin/wp /usr/local/bin/wp
+
+# Remove default themes and plugins
+RUN rm -rf /app/wp-content/themes/* && rm -rf /app/wp-content/plugins/*
+
+# Copy the default configuration files
+RUN cp -s /app/wp-config-docker.php /app/wp-config.php
+
+# Copy the project files to the app directory
+COPY --chown=application:application ./src /app
+
+# Copy PHP customizations
+COPY ./server/php/php.ini /opt/docker/etc/php/php.ini
+
+# Copy nginx server customizations
+COPY ./server/nginx /opt/docker/etc/nginx/vhost.common.d
+
+# Return de default user
+USER application

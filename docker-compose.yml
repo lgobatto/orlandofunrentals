@@ -1,0 +1,61 @@
+version: '3.8'
+services:
+  database:
+    container_name: ${PROJECT_NAME}_database
+    image: mariadb
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - data:/var/lib/mysql
+      - ./server/data:/docker-entrypoint-initdb.d
+    healthcheck:
+        test: [ "CMD", "healthcheck.sh", "--connect", "--innodb_initialized" ]
+        start_period: 1m
+        interval: 1m
+        timeout: 5s
+        retries: 3
+    networks:
+      - network
+
+  redis:
+    container_name: ${PROJECT_NAME}_redis
+    image: redis
+    restart: always
+    volumes:
+      - data:/data
+    networks:
+      - network
+
+  wordpress:
+    user: "${UID:-1000}:${GID:-1000}"
+    build:
+      context: .
+      dockerfile: ./server/docker/Dockerfile.local
+    container_name: ${PROJECT_NAME}_wordpress
+    volumes:
+      - wordpress_data:/app
+      - ./src/wp-content/themes/${PROJECT_NAME}:${THEME_ROOT}
+      - ./src/composer.json:/app/composer.json
+
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    env_file:
+      - .env
+    depends_on:
+      database:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    networks:
+      - network
+    ports:
+      - "80:80"
+      - "443:443"
+
+volumes:
+  data:
+  wordpress_data:
+
+networks:
+  network:
