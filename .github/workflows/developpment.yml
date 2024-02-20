@@ -12,7 +12,7 @@ name: 🚀 Deploy web develop
 jobs:
   web-deploy:
     name: 🎉 Deploy Web
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - name: 🚚 Get latest code
