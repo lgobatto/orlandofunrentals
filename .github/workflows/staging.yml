@@ -9,10 +9,12 @@ concurrency:
 
 name: 🚀 Deploy web develop
 
+
 jobs:
   web-deploy:
     name: 🎉 Deploy Web
     runs-on: ubuntu-22.04
+    environment: staging
     env:
       BUD_BROWSERSLIST_UPDATE: false
     steps:
