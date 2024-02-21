@@ -13,7 +13,8 @@ jobs:
   web-deploy:
     name: 🎉 Deploy Web
     runs-on: ubuntu-22.04
-
+    env:
+      BUD_BROWSERSLIST_UPDATE: false
     steps:
       - name: 🚚 Get latest code
         uses: actions/checkout@v3
