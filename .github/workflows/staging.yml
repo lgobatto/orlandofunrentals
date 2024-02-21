@@ -75,7 +75,7 @@ jobs:
         with:
           switches: -avzr --delete
           path: ./src/wp-content/*
-          remote_path: /opt/easyengine/sites/orlando.codigodoleo.com.br/wp-content
+          remote_path: /opt/easyengine/sites/orlando.codigodoleo.com.br/app/htdocs/wp-content
           remote_host: ${{ secrets.DEPLOY_HOST }}
           remote_port: 22
           remote_user: ${{ secrets.DEPLOY_USER }}
