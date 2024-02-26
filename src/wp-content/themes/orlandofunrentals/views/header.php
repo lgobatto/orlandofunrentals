@@ -1,6 +1,7 @@
 <?php
 $menu_items = get_field('menu_item', 'option');
 $owner_login_button = get_field('owner_login_button', 'option');
+$languages = icl_get_languages('skip_missing=N&orderby=KEY&order=DIR&link_empty_to=str');
 $menu_items = array_map(function ($item) {
   if(array_key_exists('menu_link', $item))
   {
@@ -33,9 +34,11 @@ $menu_items = array_map(function ($item) {
         </div>
       <?php endif; ?>
       <div class='menu_Idioma-nav'>
-        <a href='#' id='lang_en'>ENG</a><span>|</span>
-        <a href='#' id='lang_es'>ESP</a><span>|</span>
-        <a href='#' id='lang_pt'>POR</a>
+        <?php if ($languages) : ?>
+          <?php foreach ($languages as $lang) : ?>
+            <a href="<?php echo $lang['url']; ?>" id="lang_<?php echo $lang['language_code']; ?>"><?php echo substr($lang['native_name'], 0, 3); ?></a>
+          <?php endforeach; ?>
+        <?php endif; ?>
       </div>
     </div>
   </div>
