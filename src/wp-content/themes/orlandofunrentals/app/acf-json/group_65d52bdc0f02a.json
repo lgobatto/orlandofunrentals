@@ -3,11 +3,11 @@
     "title": "ThemeSettings",
     "fields": [
         {
-            "key": "field_65d52c128c609",
-            "label": "Theme settings",
+            "key": "field_65d7bce6f2e48",
+            "label": "Top Menu",
             "name": "",
             "aria-label": "",
-            "type": "message",
+            "type": "tab",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -16,9 +16,66 @@
                 "class": "",
                 "id": ""
             },
-            "message": "Use this page to customize theme options.",
-            "new_lines": "wpautop",
-            "esc_html": 0
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_65d7bd08f2e49",
+            "label": "Menu Item",
+            "name": "menu_item",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "row",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Row",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_65d7bd16f2e4a",
+                    "label": "Menu Link",
+                    "name": "menu_link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "translations": "copy_once",
+                    "parent_repeater": "field_65d7bd08f2e49"
+                }
+            ]
+        },
+        {
+            "key": "field_65dca8cf15bbf",
+            "label": "Owner Login Button",
+            "name": "owner_login_button",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
         }
     ],
     "location": [
@@ -39,5 +96,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1708469776
+    "modified": 1708959980
 }

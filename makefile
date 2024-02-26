@@ -8,7 +8,7 @@ init:
 	@make up --no-print-directory
 	@make composer command="install" --no-print-directory
 	@make yarn command="&& yarn install" --no-print-directory
-	@make yarn command="run dev" --no-print-directory
+	@make yarn command="build" --no-print-directory
 	@echo 'Environment setup finished.'
 
 up:
@@ -18,7 +18,7 @@ down:
 	@docker compose down $(params)
 
 dev:
-	@make yarn command="run watch" --no-print-directory
+	@make yarn command="dev" --no-print-directory
 	@make message message="Environment is ready" --no-print-directory
 
 kill:
