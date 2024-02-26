@@ -2,7 +2,7 @@
 
 /**
  * This file contains common and useful functions to avoid code duplication (DRY).
- * 
+ *
  * @package OrlandoFunRentals
  * @subpackage Helpers
  * @since 1.0.0
@@ -29,4 +29,14 @@ function fileUrl ($endpoint, $folder = 'dist') {
  */
 function filePath ($endpoint, $folder = 'dist') {
     return join("/", [get_stylesheet_directory(), $folder, $endpoint]);
+}
+
+/**
+ * Retrieves the language shortcode.
+ *
+ * @return string The language shortcode.
+ */
+function get_language_shortcode()
+{
+    return apply_filters('wpml_current_language', null);
 }

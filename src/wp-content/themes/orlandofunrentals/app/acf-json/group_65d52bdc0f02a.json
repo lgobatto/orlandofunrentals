@@ -60,6 +60,22 @@
                     "parent_repeater": "field_65d7bd08f2e49"
                 }
             ]
+        },
+        {
+            "key": "field_65dca8cf15bbf",
+            "label": "Owner Login Button",
+            "name": "owner_login_button",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
         }
     ],
     "location": [
@@ -80,5 +96,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1708637525
+    "modified": 1708959980
 }

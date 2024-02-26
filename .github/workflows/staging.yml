@@ -70,6 +70,12 @@ jobs:
       - name: Remove node_modules
         run: cd src/wp-content/themes/orlandofunrentals && rm -rf node_modules
 
+      - name: 📂 Fix folder permissions
+        run: chmod -R 755 src/wp-content
+      
+      - name: 📂 Fix folder owner before rsync
+        run: sudo chown -R www-data:www-data src/wp-content
+
       - name: 📂 Sync content files
         uses: burnett01/rsync-deployments@6.0.0
         with:
