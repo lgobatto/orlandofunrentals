@@ -39,6 +39,7 @@ services:
       - ./src/packages:/app/packages
       - ./src/composer.json:/app/composer.json
       - ./src/auth.json:/app/auth.json
+      - ./src/wp-config.php:/app/wp-config.php
 
     extra_hosts:
       - 'host.docker.internal:host-gateway'
