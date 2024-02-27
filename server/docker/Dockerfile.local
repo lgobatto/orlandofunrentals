@@ -37,9 +37,6 @@ COPY --from=wordpress:cli /usr/local/bin/wp /usr/local/bin/wp
 # Remove default themes and plugins
 RUN rm -rf /app/wp-content/themes/* && rm -rf /app/wp-content/plugins/*
 
-# Copy the default configuration files
-RUN cp -s /app/wp-config-docker.php /app/wp-config.php
-
 # Copy the project files to the app directory
 COPY --chown=application:application ./src /app
 
