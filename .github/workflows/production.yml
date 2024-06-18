@@ -81,7 +81,7 @@ jobs:
         with:
           switches: -avzr --delete
           path: ./src/wp-content/*
-          remote_path: ${{ secrets.DEPLOY_HOST }}
+          remote_path: ${{ secrets.DEPLOY_PATH }}
           remote_host: ${{ secrets.DEPLOY_HOST }}
           remote_port: 22
           remote_user: ${{ secrets.DEPLOY_USER }}
