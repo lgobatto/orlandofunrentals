@@ -1,0 +1,88 @@
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+name: 🚀 Deploy web production
+
+
+jobs:
+  web-deploy:
+    name: 🎉 Deploy Web
+    runs-on: ubuntu-22.04
+    environment: production
+    env:
+      BUD_BROWSERSLIST_UPDATE: false
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v3
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache Yarn dependencies
+        uses: actions/cache@v3
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Use PHP 8.2
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+          extensions: mbstring, zip
+
+      - name: Use Node.js 20.11.1
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20.11.1'
+
+      - name: Install Composer dependencies theme
+        run: cd src && composer install
+
+      - name: Install Yarn dependencies theme
+        run: cd src/wp-content/themes/orlandofunrentals && yarn
+
+      - name: Build assets with Yarn theme
+        run: cd src/wp-content/themes/orlandofunrentals && yarn build
+
+      - name: Remove node_modules
+        run: cd src/wp-content/themes/orlandofunrentals && rm -rf node_modules
+
+      - name: 📂 Fix folder permissions
+        run: chmod -R 755 src/wp-content
+      
+      - name: 📂 Fix folder owner before rsync
+        run: sudo chown -R www-data:www-data src/wp-content
+
+      - name: 📂 Sync content files
+        uses: burnett01/rsync-deployments@6.0.0
+        with:
+          switches: -avzr --delete
+          path: ./src/wp-content/*
+          remote_path: ${{ secrets.DEPLOY_HOST }}
+          remote_host: ${{ secrets.DEPLOY_HOST }}
+          remote_port: 22
+          remote_user: ${{ secrets.DEPLOY_USER }}
+          remote_key: ${{ secrets.DEPLOY_KEY }}
