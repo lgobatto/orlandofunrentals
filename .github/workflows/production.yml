@@ -1,20 +1,20 @@
 on:
   push:
     branches:
-      - develop
+      - main
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-name: 🚀 Deploy web develop
+name: 🚀 Deploy web production
 
 
 jobs:
   web-deploy:
     name: 🎉 Deploy Web
     runs-on: ubuntu-22.04
-    environment: staging
+    environment: production
     env:
       BUD_BROWSERSLIST_UPDATE: false
     steps:
