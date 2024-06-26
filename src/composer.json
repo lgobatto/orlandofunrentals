@@ -21,7 +21,7 @@
       "type": "package",
       "package": {
         "name": "plugin/wp-migrate-db-pro",
-        "version": "2.6.11",
+        "version": "2.6.13",
         "type": "wordpress-plugin",
         "dist": {
           "type": "zip",
@@ -124,15 +124,14 @@
     "inpsyde/wp-translation-downloader": "2.4",
     "plugin/elementor": "3.19.2",
     "plugin/elementor-pro": "3.19.2",
-    "plugin/wp-migrate-db-pro": "2.6.11",
+    "plugin/wp-migrate-db-pro": "2.6.13",
     "plugin/wp-rocket": "3.15.9",
     "plugin/sitepress-multilingual-cms": "4.6.91",
     "plugin/wpml-string-translation": "3.2.9",
     "plugin/seo-by-rank-math-pro": "3.0.56",
     "plugin/ultimate-elementor": "1.36.29",
     "wpackagist-theme/hello-elementor": "3.0.1",
-    "wpengine/advanced-custom-fields-pro": "6.2.6.1",
-    "wpackagist-plugin/fakerpress": "0.6.2"
+    "wpengine/advanced-custom-fields-pro": "6.2.6.1"
   },
   "extra": {
     "installer-paths": {
