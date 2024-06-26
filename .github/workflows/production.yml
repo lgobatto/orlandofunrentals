@@ -79,7 +79,7 @@ jobs:
       - name: 📂 Sync content files
         uses: burnett01/rsync-deployments@6.0.0
         with:
-          switches: -avzr --exclude 'uploads' --exclude 'cache' --no-times
+          switches: -avzr --exclude 'uploads' --exclude 'cache' --no-times --no-perms
           path: ./src/wp-content/
           remote_path: ${{ secrets.DEPLOY_PATH }}
           remote_host: ${{ secrets.DEPLOY_HOST }}
