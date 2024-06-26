@@ -13,5 +13,9 @@ module.exports = {
     'selector-class-pattern': null,
     'custom-property-pattern': null,
     'selector-id-pattern': null,
+    'no-descending-specificity': null,
+    'length-zero-no-unit': null,
+    'media-feature-range-notation': null,
+    "shorthand-property-no-redundant-values": null,
   },
 };

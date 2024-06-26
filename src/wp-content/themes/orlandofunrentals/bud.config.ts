@@ -6,7 +6,7 @@ import type {Bud} from '@roots/bud';
 export default async (bud: Bud) => {
   bud
     .entry('app', ['@scripts/app.js', '@styles/app.scss'])
-    .assets(['images', 'fonts'])
+    .assets('images')
     .runtime(false)
     .splitChunks(false)
     .watch(['./views', 'app']);
