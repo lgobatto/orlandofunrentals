@@ -4,6 +4,8 @@ $logo_image = wp_get_attachment_image_src($custom_logo_id, 'full');
 $menu_items = get_field('menu_item', 'option');
 $owner_login_button = get_field('owner_login_button', 'option');
 $languages = icl_get_languages('skip_missing=N&orderby=KEY&order=DIR&link_empty_to=str');
+$languages = apply_filters('wpml_active_languages', $languages);
+$active_lang = reset($languages);
 $menu_items = array_map(function ($item) {
   if (array_key_exists('menu_link', $item)) {
     return [
@@ -29,7 +31,25 @@ $menu_items = array_map(function ($item) {
             <li><a href="<?php echo $menu_item['url']; ?>"><?php echo $menu_item['title']; ?></a></li>
           <?php endforeach; ?>
         </ul>
-        <div class="container-bt-owner"><button class="bt-owner-login">Owner Log In</button></div>
+        <div class="language-selector relative ml-8 uppercase group">
+          <button class="language-selector__btn">
+            <?php echo substr($active_lang['native_name'], 0, 3); ?>
+            <svg class="group-hover:rotate-180" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 10L12 14L16 10" stroke="#3D3D3D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <div id="select-lang" class="language-selector__switcher group-hover:block">
+            <?php foreach ($languages as $lang) : ?>
+              <?php if ($lang['active']) continue; ?>
+              <a href="<?php echo $lang['url']; ?>">
+                <?php echo substr($lang['native_name'], 0, 3); ?>
+              </a>
+            <?php endforeach; ?>
+          </div>
+        </div>
+        <div class="container-bt-owner">
+          <a href="<?php echo $owner_login_button['url']; ?>" target="<?php echo $owner_login_button['target']; ?>" class="bt-owner-login"><?php echo $owner_login_button['title']; ?></a>
+        </div>
       </nav>
     </div>
   </div>
@@ -43,7 +63,7 @@ $menu_items = array_map(function ($item) {
         <?php if (empty($menu_item['url']) || empty($menu_item['title'])) continue; ?>
         <li><a href="<?php echo $menu_item['url']; ?>"><?php echo $menu_item['title']; ?></a></li>
       <?php endforeach; ?>
-      <li class="menu-mob-owner"><button class="bt-owner-login bt-owner-login-mobile">Owner Log In</button></li>
+      <li class="menu-mob-owner"><a href="<?php echo $owner_login_button['url']; ?>" target="<?php echo $owner_login_button['target']; ?>" class="bt-owner-login bt-owner-login-mobile"><?php echo $owner_login_button['title']; ?></a></li>
       <li class="menu-mob-lang"><label>Language:</label>
         <!-- <div class="menu-mob-lang-container"><button class="button_simple">POR</button><button class="button_simple active">ENG</button><button class="button_simple">ESP</button></div> -->
       </li>

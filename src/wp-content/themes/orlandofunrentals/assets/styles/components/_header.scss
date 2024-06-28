@@ -85,13 +85,13 @@
 }
 
 .menuDesktop ul li {
-  padding: 20px 17px;
+  padding: 0 17px;
   transition-property: padding;
   transition-duration: 0.35s;
   transition-timing-function: ease;
 
   @media screen and (max-width: 1366px) {
-    padding: 20px 12px;
+    padding: 0 12px;
   }
 }
 
@@ -437,6 +437,7 @@
 }
 
 .bt-owner-login {
+  display: block;
   font-family: Inter, sans-serif;
   color: #f6f6f6;
   border: 0px solid transparent;
@@ -455,11 +456,63 @@
   transition-property: background-color, color, border;
   transition-duration: 0.35s;
   transition-timing-function: ease-in;
-  margin-left: 32px;
+  text-align: center;
 
   &:hover {
     color: #fff;
     border: 0px solid transparent;
     background-color: var(--actionPrimaryColorHover);
+  }
+}
+
+.language-selector {
+  &__btn {
+    @apply  uppercase
+            flex
+            items-center
+            py-[12px]
+            pb-[12px]
+            px-3
+            gap-2
+            border-2
+            border-gray-300
+            rounded-none
+            text-neutral-700
+            focus:outline-none;
+
+    &:hover,
+    &:active,
+    &:focus,
+    &:focus-within,
+    &:focus-visible {
+      @apply  bg-white
+              text-neutral-700
+              border-gray-300;
+    }
+  }
+
+  &__switcher {
+    @apply  absolute
+            hidden
+            top-full
+            w-full
+            border-solid
+            border-2
+            border-t-0
+            border-gray-300;
+
+    a {
+      @apply  block
+              uppercase
+              py-2
+              px-3
+              text-neutral-700
+              border-b-gray-300
+              border-solid
+              border-0
+              border-b-2
+              bg-white
+              last:border-b-0;
+    }
   }
 }

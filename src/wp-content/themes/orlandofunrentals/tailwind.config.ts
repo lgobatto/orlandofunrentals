@@ -7,6 +7,9 @@ export default {
         secondary: '#7A785A',
         text: '#3C4343',
         accent: '#aaaaaa',
+        neutral: {
+          700: '#333'
+        }
       },
       fontFamily: {
         sans: ['Montserrat', 'sans-serif'],

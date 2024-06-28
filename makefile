@@ -31,14 +31,18 @@ shell:
 
 composer:
 	@echo 'Running composer $(command)...'
-	@docker compose exec -i -t -w $(if $(strip $(work_dir)),$(work_dir),${DOCUMENT_ROOT}) wordpress sh -c "composer $(command)"
+	@make exec  work_dir="${DOCUMENT_ROOT}" command="rm -f composer.lock"
+	@make exec command="composer $(command)"
 
 yarn:
 	@echo 'Running yarn $(command)...'
-	@docker compose exec -i -t -w $(if $(strip $(work_dir)),$(work_dir),${THEME_ROOT}) wordpress sh -c "yarn $(command)"
+	@make exec command="yarn $(if $(strip $(command)),$(command),build)" work_dir="${THEME_ROOT}"
 
 cli:
 	@docker compose exec -i -t -w $(work_dir) wordpress sh -c "wp $(command) --quiet"
+
+exec:
+	@docker compose exec -i -t -w $(if $(strip $(work_dir)),$(work_dir),${DOCUMENT_ROOT}) wordpress sh -c "$(command)"
 
 db-backup:
 	@echo 'Backup database started'
