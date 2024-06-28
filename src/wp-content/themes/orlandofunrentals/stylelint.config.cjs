@@ -16,6 +16,6 @@ module.exports = {
     'no-descending-specificity': null,
     'length-zero-no-unit': null,
     'media-feature-range-notation': null,
-    "shorthand-property-no-redundant-values": null,
+    "shorthand-property-no-redundant-values": null
   },
 };

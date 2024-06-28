@@ -64,8 +64,12 @@ $menu_items = array_map(function ($item) {
         <li><a href="<?php echo $menu_item['url']; ?>"><?php echo $menu_item['title']; ?></a></li>
       <?php endforeach; ?>
       <li class="menu-mob-owner"><a href="<?php echo $owner_login_button['url']; ?>" target="<?php echo $owner_login_button['target']; ?>" class="bt-owner-login bt-owner-login-mobile"><?php echo $owner_login_button['title']; ?></a></li>
-      <li class="menu-mob-lang"><label>Language:</label>
-        <!-- <div class="menu-mob-lang-container"><button class="button_simple">POR</button><button class="button_simple active">ENG</button><button class="button_simple">ESP</button></div> -->
+      <li class="menu-mob-lang">
+        <label>Language:</label>
+        <div class="menu-mob-lang-container">
+          <?php foreach ($languages as $lang) : ?>
+            <a href="<?php echo $lang['url']; ?>" class="button_simple"><?php echo substr($lang['native_name'], 0, 3); ?></a>
+          <?php endforeach; ?>
       </li>
     </ul>
   </div>

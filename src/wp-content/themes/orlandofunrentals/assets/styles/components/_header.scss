@@ -1,7 +1,35 @@
 :root {
-  --actionPrimaryColor: #2d75ca;
-  --actionPrimaryColorHover: #193f73;
-
+  --primary-color: #2e87bb;
+  --primary-color-hover: #1b4c69;
+  --primary-color-reverse: #f8f8f8;
+  --surface-ground: #f8f8f8;
+  --surface-section: #fafafa;
+  --surface-card: #fff;
+  --brandSecundaryGold: #504F3B;
+  --brandSecundaryGold-dark: #39392E;
+  --brandSecundaryGold-light: #9E9B7D;
+  --card-hover: #F0EDE4;
+  --actionPrimaryColor: #2D75CA;
+  --actionPrimaryColorHover: #193F73;
+  --secundary-color: #2ebbaf;
+  --apoio-color: #626867;
+  --text: #696969;
+  --text-silver: #e7e7e7;
+  --text-silver-medium: #979797;
+  --title-color: #454545;
+  --title-color-dark: #3d3d3d;
+  --text-color: #4F4F4F;
+  --text-color-secondary: #4F4F4F;
+  --text-primary: #2e87bb;
+  --text-reverse: #fff;
+  --text-medium: #5d5d5d;
+  --blue: #06f;
+  --red: #dc2626;
+  --green: #0d6d11;
+  --field-border: #dfdfe0;
+  --hover: #f7f5f1;
+  /* stylelint-disable-next-line */
+  --shadow: 1px 1px 5px rgba(0, 0, 0, 0.35);
 }
 
 .header-top {
@@ -291,6 +319,7 @@
   transform-origin: 0% 0%;
   transform: translate(110vw, 0px);
   transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  list-style-type: none;
 }
 
 .menu-mobile li {
@@ -343,6 +372,10 @@
 
 .menu-mobile .menu-mob-owner {
   padding: 48px 0px;
+
+  a {
+    color: #fff !important;
+  }
 }
 
 #menuToggle input:checked ~ ul {
@@ -466,6 +499,9 @@
 }
 
 .language-selector {
+  @apply  hidden
+          lg:flex;
+
   &__btn {
     @apply  uppercase
             flex
