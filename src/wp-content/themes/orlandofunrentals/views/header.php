@@ -5,7 +5,6 @@ $menu_items = get_field('menu_item', 'option');
 $owner_login_button = get_field('owner_login_button', 'option');
 $languages = icl_get_languages('skip_missing=N&orderby=KEY&order=DIR&link_empty_to=str');
 $languages = apply_filters('wpml_active_languages', $languages);
-$active_lang = reset($languages);
 $menu_items = array_map(function ($item) {
   if (array_key_exists('menu_link', $item)) {
     return [
@@ -33,7 +32,10 @@ $menu_items = array_map(function ($item) {
         </ul>
         <div class="language-selector relative ml-8 uppercase group">
           <button class="language-selector__btn">
-            <?php echo substr($active_lang['native_name'], 0, 3); ?>
+            <?php foreach ($languages as $lang) : ?>
+              <?php if (!$lang['active']) continue; ?>
+              <?php echo substr($lang['native_name'], 0, 3); ?>
+            <?php endforeach; ?>
             <svg class="group-hover:rotate-180" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M8 10L12 14L16 10" stroke="#3D3D3D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
             </svg>

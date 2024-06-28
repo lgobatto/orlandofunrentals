@@ -503,6 +503,8 @@
           lg:flex;
 
   &__btn {
+    font-family: Inter, sans-serif;
+
     @apply  uppercase
             flex
             items-center
@@ -514,7 +516,9 @@
             border-gray-300
             rounded-none
             text-neutral-700
-            focus:outline-none;
+            focus:outline-none
+            font-bold
+            text-sm;
 
     &:hover,
     &:active,
@@ -538,6 +542,8 @@
             border-gray-300;
 
     a {
+      font-family: Inter, sans-serif;
+
       @apply  block
               uppercase
               py-2
@@ -548,7 +554,9 @@
               border-0
               border-b-2
               bg-white
-              last:border-b-0;
+              last:border-b-0
+              font-bold
+              text-sm;
     }
   }
 }
